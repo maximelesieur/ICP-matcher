@@ -196,17 +196,17 @@
 <!-- HEADER -->
 <div class="header">
   <div class="badge">LinkedIn ICP Matcher</div>
-  <h1>Trouve les bons profils<br>dans tes engagements LinkedIn</h1>
-  <p class="subtitle">Définis ton ICP · Colle ta liste · Obtiens un scoring IA instantané</p>
+  <h1>Find the right profiles<br>from your LinkedIn engagement</h1>
+  <p class="subtitle">Define your ICP · Paste your list · Get instant AI scoring</p>
 </div>
 
 <!-- STEPPER -->
 <div class="stepper">
-  <div class="step-btn active" id="step-btn-0">1 Définir l'ICP</div>
+  <div class="step-btn active" id="step-btn-0">1 Define ICP</div>
   <div class="step-divider"></div>
-  <div class="step-btn" id="step-btn-1">2 Coller la liste</div>
+  <div class="step-btn" id="step-btn-1">2 Paste list</div>
   <div class="step-divider"></div>
-  <div class="step-btn" id="step-btn-2">3 Résultats</div>
+  <div class="step-btn" id="step-btn-2">3 Results</div>
 </div>
 
 <!-- CARD -->
@@ -215,50 +215,54 @@
   <!-- STEP 0 — ICP -->
   <div id="step-0">
     <div class="card-header">
-      <h2>🎯 Définis ton ICP</h2>
+      <h2>🎯 Define your ICP</h2>
       <div class="save-row">
         <span class="save-status hidden" id="save-status"></span>
-        <button class="btn btn-ghost" onclick="resetICP()">Réinitialiser</button>
+        <button class="btn btn-ghost" onclick="resetICP()">Reset</button>
       </div>
     </div>
-    <p class="desc">Plus c'est précis, meilleur sera le scoring. Au minimum, remplis les secteurs ou les titres.</p>
+    <p class="desc">The more precise, the better the scoring. At minimum, fill in sectors or titles.</p>
 
     <div class="field">
-      <label>Titres / Fonctions cibles</label>
-      <input id="icp-titres" type="text" placeholder="ex: CEO, CTO, Directeur Commercial, Head of Growth..."/>
+      <label>Target Titles / Roles</label>
+      <input id="icp-titres" type="text" placeholder="e.g. CEO, CTO, Head of Sales, Head of Growth..."/>
     </div>
     <div class="field">
-      <label>Secteurs d'activité</label>
-      <input id="icp-secteurs" type="text" placeholder="ex: SaaS B2B, Fintech, E-commerce, Industrie..."/>
+      <label>Industry Sectors</label>
+      <input id="icp-secteurs" type="text" placeholder="e.g. SaaS B2B, Fintech, E-commerce, Manufacturing..."/>
     </div>
     <div class="field">
-      <label>Taille d'entreprise</label>
-      <input id="icp-tailles" type="text" placeholder="ex: PME 50-500 salariés, Scale-up, ETI..."/>
+      <label>Company Size</label>
+      <input id="icp-tailles" type="text" placeholder="e.g. SMB 50-500 employees, Scale-up, Mid-market..."/>
     </div>
     <div class="field">
-      <label>Géographies</label>
-      <input id="icp-geographies" type="text" placeholder="ex: France, DACH, Benelux, Europe..."/>
+      <label>Geographies</label>
+      <input id="icp-geographies" type="text" placeholder="e.g. US, UK, Europe, UAE..."/>
     </div>
     <div class="field">
-      <label>Autres critères</label>
-      <input id="icp-autres" type="text" placeholder="ex: lève des fonds, en croissance, utilise Salesforce..."/>
+      <label>Other Criteria</label>
+      <input id="icp-autres" type="text" placeholder="e.g. raising funds, growing fast, uses Salesforce..."/>
     </div>
 
-    <button class="btn btn-primary" id="btn-to-step1" onclick="goToStep1()" disabled>Continuer →</button>
+    <button class="btn btn-primary" id="btn-to-step1" onclick="goToStep1()" disabled>Continue →</button>
   </div>
 
   <!-- STEP 1 — LISTE -->
   <div id="step-1" class="hidden">
-    <h2>📋 Colle ta liste LinkedIn</h2>
-    <p class="desc">Copie-colle les noms, titres, entreprises que tu vois dans les likes/commentaires du post.</p>
-    <div class="tip">
-      💡 <strong>Tips :</strong> Copie tout en vrac depuis LinkedIn, même si c'est désordonné.<br>
-      Ex: <em>"Jean Dupont · CEO chez Acme · 2ème · Sophie Martin a aimé..."</em>
+    <h2>📋 Paste your LinkedIn list</h2>
+    <div style="background:#e8f4fd;border:1px solid #b3d9f5;border-radius:10px;padding:10px 14px;font-size:13px;color:#1a6fa8;margin-bottom:16px;line-height:1.7;">
+      🎯 <strong>Your ICP:</strong> CEO / Founder · Solopreneur &amp; small companies · US, UAE, Europe, UK
+      <span onclick="showStep(0)" style="margin-left:10px;font-size:11px;text-decoration:underline;cursor:pointer;opacity:.7;">Edit</span>
     </div>
-    <textarea id="raw-list" rows="10" placeholder="Jean Dupont · CEO chez Acme&#10;Sophie Martin, Head of Sales @ StartupXYZ&#10;Pierre Leblanc a commenté : 'Super article'&#10;Marie Leclerc · Directrice Marketing · Groupe Bernard..."></textarea>
+    <p class="desc">Copy-paste the names, titles, companies you see in the post's likes/comments.</p>
+    <div class="tip">
+      💡 <strong>Tips:</strong> Copy everything in bulk from LinkedIn, even if messy.<br>
+      e.g. <em>"John Smith · CEO at Acme · 2nd · Sophie Martin liked this..."</em>
+    </div>
+    <textarea id="raw-list" rows="10" placeholder="John Smith · CEO at Acme&#10;Sophie Martin, Head of Sales @ StartupXYZ&#10;Peter Brown commented: 'Great article'&#10;Marie Leclerc · Marketing Director · Bernard Group..."></textarea>
     <div class="btn-row">
-      <button class="btn btn-secondary" onclick="showStep(0)">← Modifier l'ICP</button>
-      <button class="btn btn-primary" id="btn-analyze" onclick="analyze()" disabled>🔍 Analyser avec l'IA →</button>
+      <button class="btn btn-secondary" onclick="showStep(0)">← Edit l'ICP</button>
+      <button class="btn btn-primary" id="btn-analyze" onclick="analyze()" disabled>🔍 Analyse with AI →</button>
     </div>
     <p class="error hidden" id="error-msg"></p>
   </div>
@@ -267,20 +271,20 @@
   <div id="step-2" class="hidden">
     <div class="results-header">
       <div>
-        <h2>✅ Résultats du scoring</h2>
+        <h2>✅ Scoring Results</h2>
         <p style="color:var(--slate);font-size:13px;margin-top:6px;" id="results-meta"></p>
       </div>
       <div class="results-actions">
-        <button class="btn btn-secondary" onclick="showStep(1)">← Modifier</button>
-        <button class="btn btn-primary" style="width:auto;" id="btn-copy" onclick="copySelected()">📋 Copier la sélection (<span id="selected-count">0</span>)</button>
+        <button class="btn btn-secondary" onclick="showStep(1)">← Edit</button>
+        <button class="btn btn-primary" style="width:auto;" id="btn-copy" onclick="copySelected()">📋 Copy selection (<span id="selected-count">0</span>)</button>
       </div>
     </div>
     <div class="icp-banner hidden" id="icp-summary-banner"></div>
     <div class="legend">
       <span class="tag">🔥 Top ≥ 80%</span>
-      <span class="tag">⚡ Potentiel 50–79%</span>
-      <span class="tag">❄️ Faible &lt; 50%</span>
-      <span class="legend-hint">Cliquez pour sélectionner/désélectionner</span>
+      <span class="tag">⚡ Potential 50–79%</span>
+      <span class="tag">❄️ Low &lt; 50%</span>
+      <span class="legend-hint">Click to select/deselect</span>
     </div>
     <div class="person-list" id="person-list"></div>
     <div class="summary-bar" id="summary-bar"></div>
@@ -289,15 +293,15 @@
   <!-- LOADING -->
   <div id="step-loading" class="hidden loader">
     <div class="spinner"></div>
-    <p style="color:var(--slate);font-size:14px;">Analyse IA en cours...</p>
+    <p style="color:var(--slate);font-size:14px;">AI analysis in progress...</p>
   </div>
 
 </div>
 
-<p class="footer">Propulsé par Claude · ICP sauvegardé automatiquement sur cet appareil</p>
+<p class="footer">Powered by Claude · Pre-configured ICP</p>
 
 <!-- TOAST -->
-<div class="toast" id="toast">📋 Copié dans le presse-papier !</div>
+<div class="toast" id="toast">📋 Copied to clipboard!</div>
 
 <script>
 const STORAGE_KEY = 'icp-matcher-v1';
@@ -348,11 +352,11 @@ document.getElementById('raw-list').addEventListener('input', () => {
 // ─── STORAGE ──────────────────────────────────────────────────
 function scheduleAutoSave() {
   clearTimeout(saveTimer);
-  showSaveStatus('saving', '⏳ Sauvegarde...');
+  showSaveStatus('saving', '⏳ Saving...');
   saveTimer = setTimeout(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(getICP()));
-      showSaveStatus('saved', '✓ Sauvegardé');
+      showSaveStatus('saved', '✓ Saved');
       setTimeout(() => hideSaveStatus(), 2500);
     } catch(e) { hideSaveStatus(); }
   }, 800);
@@ -363,7 +367,7 @@ function loadSaved() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       setICP(JSON.parse(raw));
-      showSaveStatus('loaded', '↩ ICP chargé');
+      showSaveStatus('loaded', '↩ ICP loaded');
       setTimeout(() => hideSaveStatus(), 3000);
     }
   } catch(e) {}
@@ -415,30 +419,30 @@ async function analyze() {
 
   const icp = getICP();
   const icpText = `
-- Secteurs cibles: ${icp.secteurs || 'non précisé'}
-- Titres / fonctions cibles: ${icp.titres || 'non précisé'}
-- Taille d'entreprise: ${icp.tailles || 'non précisé'}
-- Géographies: ${icp.geographies || 'non précisé'}
-- Autres critères: ${icp.autres || 'non précisé'}`.trim();
+- Target sectors: ${icp.secteurs || 'not specified'}
+- Target titles / roles: ${icp.titres || 'not specified'}
+- Company Size: ${icp.tailles || 'not specified'}
+- Geographies: ${icp.geographies || 'not specified'}
+- Other Criteria: ${icp.autres || 'not specified'}`.trim();
 
-  const prompt = `Tu es un expert en prospection B2B et qualification de leads LinkedIn.
+  const prompt = `You are a B2B prospecting and LinkedIn lead qualification expert.
 
-Voici l'ICP (Ideal Customer Profile) du commercial :
+Here is the salesperson's ICP (Ideal Customer Profile):
 ${icpText}
 
-Voici la liste brute de personnes qui ont liké ou commenté un post LinkedIn (noms, titres, entreprises en vrac) :
+Here is the raw list of people who liked or commented on a LinkedIn post (names, titles, companies in bulk):
 ---
 ${rawList}
 ---
 
-Ta mission :
-1. Extraire chaque personne identifiable (nom, titre si disponible, entreprise si disponible)
-2. Scorer chaque personne de 0 à 100 selon la correspondance avec l'ICP
-3. Classer par score décroissant
-4. Pour chaque personne, donner une raison courte (1 ligne max)
+Your task:
+1. Extract each identifiable person (name, title if available, company if available)
+2. Score each person from 0 to 100 based on ICP match
+3. Sort by score descending
+4. For each person, give a short reason (1 line max)
 
-Réponds UNIQUEMENT en JSON valide, sans markdown, sans backticks :
-{"total":<n>,"icp_summary":"<résumé 1 phrase>","persons":[{"name":"<nom>","title":"<titre ou null>","company":"<entreprise ou null>","score":<0-100>,"reason":"<raison courte>"}]}`;
+Respond ONLY in valid JSON, no markdown, no backticks:
+{"total":<n>,"icp_summary":"<1 sentence summary>","persons":[{"name":"<name>","title":"<title or null>","company":"<company or null>","score":<0-100>,"reason":"<short reason>"}]}`;
 
   // Show loading
   document.getElementById('step-0').classList.add('hidden');
@@ -468,7 +472,7 @@ Réponds UNIQUEMENT en JSON valide, sans markdown, sans backticks :
     document.getElementById('step-loading').classList.add('hidden');
     document.getElementById('step-1').classList.remove('hidden');
     const err = document.getElementById('error-msg');
-    err.textContent = "Erreur lors de l'analyse. Vérifie le format de ta liste.";
+    err.textContent = "Error during analysis. Check the format of your list.";
     err.classList.remove('hidden');
   }
 }
@@ -477,11 +481,11 @@ Réponds UNIQUEMENT en JSON valide, sans markdown, sans backticks :
 function renderResults() {
   const topCount = results.persons.filter(p => p.score >= 70).length;
   document.getElementById('results-meta').textContent =
-    `${results.total} personnes détectées · ${topCount} top matches`;
+    `${results.total} people detected · ${topCount} top matches`;
 
   if (results.icp_summary) {
     const banner = document.getElementById('icp-summary-banner');
-    banner.innerHTML = `🎯 <strong>ICP analysé :</strong> ${results.icp_summary}`;
+    banner.innerHTML = `🎯 <strong>ICP summary:</strong> ${results.icp_summary}`;
     banner.classList.remove('hidden');
   }
 
@@ -520,7 +524,7 @@ function togglePerson(name, card) {
 function updateSummary() {
   document.getElementById('selected-count').textContent = selected.size;
   document.getElementById('summary-bar').innerHTML =
-    `<strong style="color:var(--navy)">${selected.size} profils sélectionnés</strong> · Clique sur "Copier la sélection" pour exporter les noms à ajouter sur LinkedIn`;
+    `<strong style="color:var(--navy)">${selected.size} profiles selected</strong> · Click "Copy selection" to export names to add on LinkedIn`;
 }
 
 // ─── COPY ─────────────────────────────────────────────────────
@@ -540,8 +544,16 @@ function showToast() {
 }
 
 // ─── INIT ─────────────────────────────────────────────────────
-loadSaved();
-showStep(0);
+// Pre-defined ICP — edit these values to update your ICP
+const PRESET_ICP = {
+  titres: 'CEO, Founder, Co-founder',
+  secteurs: 'All sectors',
+  tailles: 'Solopreneur or small companies (1-20 employees)',
+  geographies: 'US, UAE, Europe, UK',
+  autres: ''
+};
+setICP(PRESET_ICP);
+showStep(1);
 </script>
 </body>
 </html>
