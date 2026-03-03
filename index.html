@@ -430,16 +430,23 @@ async function analyze() {
 Here is the salesperson's ICP (Ideal Customer Profile):
 ${icpText}
 
-Here is the raw list of people who liked or commented on a LinkedIn post (names, titles, companies in bulk):
+Here is a raw list copied directly from LinkedIn likes/comments. Each person entry typically looks like:
+- Their name followed by "View [Name]'s profile"
+- Connection degree (1st, 2nd, 3rd)
+- Their LinkedIn headline (role, company, value prop)
+
+Ignore non-person lines (follower counts, section headers like "INSPO", page names).
+
+Raw list:
 ---
 ${rawList}
 ---
 
 Your task:
-1. Extract each identifiable person (name, title if available, company if available)
-2. Score each person from 0 to 100 based on ICP match
+1. Extract each real person: name (before "View ... profile"), title and company from their headline
+2. Score each person 0-100 based on ICP match
 3. Sort by score descending
-4. For each person, give a short reason (1 line max)
+4. Give a short reason (1 line) for each score
 
 Respond ONLY in valid JSON, no markdown, no backticks:
 {"total":<n>,"icp_summary":"<1 sentence summary>","persons":[{"name":"<name>","title":"<title or null>","company":"<company or null>","score":<0-100>,"reason":"<short reason>"}]}`;
@@ -456,7 +463,7 @@ Respond ONLY in valid JSON, no markdown, no backticks:
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: MODEL,
-        max_tokens: 1000,
+        max_tokens: 2000,
         messages: [{ role: 'user', content: prompt }]
       })
     });
